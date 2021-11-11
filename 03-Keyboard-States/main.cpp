@@ -67,7 +67,7 @@ void CSampleKeyHander::KeyState(BYTE *states)
 		mario->SetPlayerMovement(State::WALK, Direction::RIGHT);
 	else if (game->IsKeyDown(DIK_LEFT))
 		mario->SetPlayerMovement(State::WALK, Direction::LEFT);
-	else if (game->IsKeyDown(DIK_NUMPAD8))
+	else if (game->IsKeyDown(DIK_UP))
 		mario->SetPlayerMovement(State::WALK, Direction::UP);
 	else if (game->IsKeyDown(DIK_DOWN))
 		mario->SetPlayerMovement(State::WALK, Direction::DOWN);
