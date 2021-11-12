@@ -18,7 +18,7 @@
 #include "GameObject.h"
 #include "Textures.h"
 
-#include "Mario.h"
+#include "Player.h"
 
 #define WINDOW_CLASS_NAME L"SampleWindow"
 #define MAIN_WINDOW_TITLE L"02 - Sprite animation"
@@ -34,7 +34,7 @@
 #define ID_TEX_MISC 20
 
 CGame *game;
-CMario *mario;
+CPlayer *player;
 
 class CSampleKeyHander: public CKeyEventHandler
 {
@@ -51,7 +51,7 @@ void CSampleKeyHander::OnKeyDown(int KeyCode)
 	switch (KeyCode)
 	{
 	case DIK_SPACE:
-		mario->SetPlayerMovement(State::JUMP, 0);
+		player->SetPlayerMovement(State::JUMP, 0);
 		break;
 	}
 }
@@ -64,14 +64,14 @@ void CSampleKeyHander::OnKeyUp(int KeyCode)
 void CSampleKeyHander::KeyState(BYTE *states)
 {
 	if (game->IsKeyDown(DIK_RIGHT))
-		mario->SetPlayerMovement(State::WALK, Direction::RIGHT);
+		player->SetPlayerMovement(State::WALK, Direction::RIGHT);
 	else if (game->IsKeyDown(DIK_LEFT))
-		mario->SetPlayerMovement(State::WALK, Direction::LEFT);
+		player->SetPlayerMovement(State::WALK, Direction::LEFT);
 	else if (game->IsKeyDown(DIK_UP))
-		mario->SetPlayerMovement(State::WALK, Direction::UP);
+		player->SetPlayerMovement(State::WALK, Direction::UP);
 	else if (game->IsKeyDown(DIK_DOWN))
-		mario->SetPlayerMovement(State::WALK, Direction::DOWN);
-	else mario->SetPlayerMovement(State::IDLE, 0);
+		player->SetPlayerMovement(State::WALK, Direction::DOWN);
+	else player->SetPlayerMovement(State::IDLE, 0);
 }
 
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -89,7 +89,7 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 /*
 	Load all game resources 
-	In this example: load textures, sprites, animations and mario object
+	In this example: load textures, sprites, animations and player object
 */
 void LoadResources()
 {
@@ -100,27 +100,27 @@ void LoadResources()
 	CSprites * sprites = CSprites::GetInstance();
 	CAnimations * animations = CAnimations::GetInstance();
 	
-	LPDIRECT3DTEXTURE9 texMario = textures->Get(ID_TEX_MARIO);
+	LPDIRECT3DTEXTURE9 texPlayer = textures->Get(ID_TEX_MARIO);
 
 	//Player left
-	sprites->Add(10001, 209, 69, 231, 100, texMario);
-	sprites->Add(10002, 234, 69, 256, 100, texMario);
-	sprites->Add(10003, 259, 69, 281, 100, texMario);
+	sprites->Add(10001, 209, 69, 231, 100, texPlayer);
+	sprites->Add(10002, 234, 69, 256, 100, texPlayer);
+	sprites->Add(10003, 259, 69, 281, 100, texPlayer);
 
 	//right
-	sprites->Add(10011, 283, 69, 306, 100, texMario);
-	sprites->Add(10012, 309, 69, 331, 100, texMario);
-	sprites->Add(10013, 334, 69, 356, 100, texMario);
+	sprites->Add(10011, 283, 69, 306, 100, texPlayer);
+	sprites->Add(10012, 309, 69, 331, 100, texPlayer);
+	sprites->Add(10013, 334, 69, 356, 100, texPlayer);
 
 	//down
-	sprites->Add(10021, 209, 4, 231, 35, texMario);
-	sprites->Add(10022, 234, 4, 256, 35, texMario);
-	sprites->Add(10023, 259, 4, 281, 35, texMario);
+	sprites->Add(10021, 209, 4, 231, 35, texPlayer);
+	sprites->Add(10022, 234, 4, 256, 35, texPlayer);
+	sprites->Add(10023, 259, 4, 281, 35, texPlayer);
 
 	//up
-	sprites->Add(10031, 208, 37, 231, 67, texMario);
-	sprites->Add(10032, 233, 37, 256, 67, texMario);
-	sprites->Add(10033, 258, 37, 281, 67, texMario);
+	sprites->Add(10031, 208, 37, 231, 67, texPlayer);
+	sprites->Add(10032, 233, 37, 256, 67, texPlayer);
+	sprites->Add(10033, 258, 37, 281, 67, texPlayer);
 
 	LPANIMATION ani;
 
@@ -148,13 +148,13 @@ void LoadResources()
 	ani->Add(10033);
 	animations->Add(503, ani);
 
-	mario = new CMario();
-	CMario::AddAnimation(500);		// left
-	CMario::AddAnimation(501);		// right
-	CMario::AddAnimation(502);		// down
-	CMario::AddAnimation(503);		// up
+	player = new CPlayer();
+	CPlayer::AddAnimation(500);		// left
+	CPlayer::AddAnimation(501);		// right
+	CPlayer::AddAnimation(502);		// down
+	CPlayer::AddAnimation(503);		// up
 
-	mario->SetPosition(0.0f, 100.0f);
+	player->SetPosition(0.0f, 100.0f);
 }
 
 /*
@@ -163,7 +163,7 @@ void LoadResources()
 */
 void Update(DWORD dt)
 {
-	mario->Update(dt);
+	player->Update(dt);
 }
 
 /*
@@ -182,7 +182,7 @@ void Render()
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
-		mario->Render();
+		player->Render();
 
 		spriteHandler->End();
 		d3ddv->EndScene();

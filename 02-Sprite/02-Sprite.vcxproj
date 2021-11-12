@@ -135,7 +135,7 @@
     <ClInclude Include="debug.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="Mario.h" />
+    <ClInclude Include="AutoPlayer.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="Textures.h" />
   </ItemGroup>

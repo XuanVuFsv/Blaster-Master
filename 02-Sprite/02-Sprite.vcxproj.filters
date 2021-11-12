@@ -53,7 +53,7 @@
     <ClInclude Include="Sprites.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Mario.h">
+    <ClInclude Include="AutoPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

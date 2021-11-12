@@ -1,12 +1,12 @@
 #include "Game.h"
-#include "Mario.h"
+#include "Player.h"
 
-void CMario::Update(DWORD dt)
+void CPlayer::Update(DWORD dt)
 {
 	CGameObject::Update(dt);
 
 	// simple fall down
-	//vy += MARIO_GRAVITY;
+	//vy += PLAYER_GRAVITY;
 	//if (y > 100) 
 	//{
 	//	vy = 0; y = 100.0f;
@@ -16,13 +16,13 @@ void CMario::Update(DWORD dt)
 	int BackBufferHeight = CGame::GetInstance()->GetBackBufferHeight();
 
 	// simple screen edge collision!!!
-	if (vx > 0 && x > BackBufferWidth - MARIO_WIDTH) x = BackBufferWidth - MARIO_WIDTH;
+	if (vx > 0 && x > BackBufferWidth - PLAYER_WIDTH) x = BackBufferWidth - PLAYER_WIDTH;
 	if (vx < 0 && x < 0) x = 0;
-	if (vy > 0 && y > BackBufferHeight - MARIO_HEIGHT) y = BackBufferHeight - MARIO_HEIGHT;
+	if (vy > 0 && y > BackBufferHeight - PLAYER_HEIGHT) y = BackBufferHeight - PLAYER_HEIGHT;
 	if (vy < 0 && y < 0) y = 0;
 }
 
-void CMario::Render()
+void CPlayer::Render()
 {
 	int ani = GetCurrentAnimation();
 
@@ -45,7 +45,7 @@ void CMario::Render()
 	animations[ani]->Render(x, y, CGameObject::GetState());
 }
 
-void CMario::SetPlayerMovement(int state, int direction)
+void CPlayer::SetPlayerMovement(int state, int direction)
 {
 	CGameObject::SetState(state);
 	if (direction != 0) CGameObject::SetDirection(direction);
@@ -59,45 +59,45 @@ void CMario::SetPlayerMovement(int state, int direction)
 	{
 		if (direction == Direction::RIGHT)
 		{
-			vx = MARIO_WALKING_SPEED;
+			vx = PLAYER_WALKING_SPEED;
 			vy = 0;
 		}
 		else if (direction == Direction::DOWN)
 		{
-			vy = MARIO_WALKING_SPEED;
+			vy = PLAYER_WALKING_SPEED;
 			vx = 0;
 		}
 		else if (direction == Direction::LEFT)
 		{
-			vx = -MARIO_WALKING_SPEED;
+			vx = -PLAYER_WALKING_SPEED;
 			vy = 0;
 		}
 		else if (direction == Direction::UP)
 		{
-			vy = -MARIO_WALKING_SPEED;
+			vy = -PLAYER_WALKING_SPEED;
 			vx = 0;
 		}
 	}
 	//else
 	//{
-	//	if (y == 100) vy = -MARIO_JUMP_SPEED_Y;
+	//	if (y == 100) vy = -PLAYER_JUMP_SPEED_Y;
 	//}
 	
 	//switch (state)
 	//{
-	//case MARIO_STATE_WALKING_RIGHT:
-	//	vx = MARIO_WALKING_SPEED;
+	//case PLAYER_STATE_WALKING_RIGHT:
+	//	vx = PLAYER_WALKING_SPEED;
 	//	nx = 1;
 	//	break;
-	//case MARIO_STATE_WALKING_LEFT: 
-	//	vx = -MARIO_WALKING_SPEED;
+	//case PLAYER_STATE_WALKING_LEFT: 
+	//	vx = -PLAYER_WALKING_SPEED;
 	//	nx = -1;
 	//	break;
-	//case MARIO_STATE_JUMP: 
+	//case PLAYER_STATE_JUMP: 
 	//	if (y==100)
-	//		vy = -MARIO_JUMP_SPEED_Y;
+	//		vy = -PLAYER_JUMP_SPEED_Y;
 
-	//case MARIO_STATE_IDLE: 
+	//case PLAYER_STATE_IDLE: 
 	//	vx = 0;
 	//	break;
 	//}

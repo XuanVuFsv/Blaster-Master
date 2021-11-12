@@ -17,7 +17,7 @@
 #include "debug.h"
 #include "Game.h"
 #include "Textures.h"
-#include "Mario.h"
+#include "AutoPlayer.h"
 
 
 #define WINDOW_CLASS_NAME L"SampleWindow"
@@ -34,7 +34,7 @@
 #define ID_TEX_ENEMY 10
 #define ID_TEX_MISC 20
 
-CMario *mario;
+CAutoPlayer *autoPlayer;
 #define MARIO_START_X 10.0f
 #define MARIO_START_Y 130.0f
 #define MARIO_START_VX 0.1f
@@ -54,7 +54,7 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 /*
 	Load all game resources 
-	In this example: load textures, sprites, animations and mario object
+	In this example: load textures, sprites, animations and autoPlayer object
 */
 void LoadResources()
 {
@@ -67,37 +67,37 @@ void LoadResources()
 
 	CSprites * sprites = CSprites::GetInstance();
 	
-	LPDIRECT3DTEXTURE9 texMario = textures->Get(ID_TEX_MARIO);
+	LPDIRECT3DTEXTURE9 texAutoPlayer = textures->Get(ID_TEX_MARIO);
 
 	// readline => id, left, top, right 
 
-	//sprites->Add(10001, 246, 154, 259, 181, texMario);
-	//sprites->Add(10002, 275, 154, 290, 181, texMario);
-	//sprites->Add(10003, 304, 154, 321, 181, texMario);
+	//sprites->Add(10001, 246, 154, 259, 181, texAutoPlayer);
+	//sprites->Add(10002, 275, 154, 290, 181, texAutoPlayer);
+	//sprites->Add(10003, 304, 154, 321, 181, texAutoPlayer);
 
-	//sprites->Add(10011, 186, 154, 199, 181, texMario);
-	//sprites->Add(10012, 155, 154, 170, 181, texMario);
-	//sprites->Add(10013, 125, 154, 140, 181, texMario);
+	//sprites->Add(10011, 186, 154, 199, 181, texAutoPlayer);
+	//sprites->Add(10012, 155, 154, 170, 181, texAutoPlayer);
+	//sprites->Add(10013, 125, 154, 140, 181, texAutoPlayer);
 
 	//Player left
-	sprites->Add(10001, 209, 69, 231, 100, texMario);
-	sprites->Add(10002, 234, 69, 256, 100, texMario);
-	sprites->Add(10003, 259, 69, 281, 100, texMario);
+	sprites->Add(10001, 209, 69, 231, 100, texAutoPlayer);
+	sprites->Add(10002, 234, 69, 256, 100, texAutoPlayer);
+	sprites->Add(10003, 259, 69, 281, 100, texAutoPlayer);
 
 	//right
-	sprites->Add(10011, 282, 69, 307, 100, texMario);
-	sprites->Add(10012, 308, 69, 332, 100, texMario);
-	sprites->Add(10013, 333, 69, 357, 100, texMario);
+	sprites->Add(10011, 282, 69, 307, 100, texAutoPlayer);
+	sprites->Add(10012, 308, 69, 332, 100, texAutoPlayer);
+	sprites->Add(10013, 333, 69, 357, 100, texAutoPlayer);
 
 	//down
-	sprites->Add(10021, 209, 3, 231, 35, texMario);
-	sprites->Add(10022, 234, 3, 256, 35, texMario);
-	sprites->Add(10023, 259, 3, 281, 35, texMario);
+	sprites->Add(10021, 209, 3, 231, 35, texAutoPlayer);
+	sprites->Add(10022, 234, 3, 256, 35, texAutoPlayer);
+	sprites->Add(10023, 259, 3, 281, 35, texAutoPlayer);
 
 	//up
-	sprites->Add(10031, 209, 36, 231, 67, texMario);
-	sprites->Add(10032, 234, 36, 256, 67, texMario);
-	sprites->Add(10033, 259, 36, 281, 67, texMario);
+	sprites->Add(10031, 209, 36, 231, 67, texAutoPlayer);
+	sprites->Add(10032, 234, 36, 256, 67, texAutoPlayer);
+	sprites->Add(10033, 259, 36, 281, 67, texAutoPlayer);
 
 	/*LPDIRECT3DTEXTURE9 texMisc = textures->Get(ID_TEX_MISC);
 	sprites->Add(20001, 300, 117, 315, 132, texMisc);
@@ -142,7 +142,7 @@ void LoadResources()
 	animations->Add(510, ani);
 	*/
 	
-	mario = new CMario(MARIO_START_X, MARIO_START_Y, MARIO_START_VX);
+	autoPlayer = new CAutoPlayer(MARIO_START_X, MARIO_START_Y, MARIO_START_VX);
 }
 
 /*
@@ -151,7 +151,7 @@ void LoadResources()
 */
 void Update(DWORD dt)
 {
-	mario->Update(dt);
+	autoPlayer->Update(dt);
 }
 
 /*
@@ -171,9 +171,9 @@ void Render()
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
-		mario->Render();
+		autoPlayer->Render();
 
-		DebugOutTitle(L"01 - Sprite %0.1f %0.1f", mario->GetX(), mario->GetY());
+		DebugOutTitle(L"01 - Sprite %0.1f %0.1f", autoPlayer->GetX(), autoPlayer->GetY());
 
 		//
 		// TEST SPRITE DRAW
