@@ -30,17 +30,24 @@ enum State
 {
 	IDLE = 0,
 	WALK = 1,
-	JUMP = 2
+	JUMP = 2,
+	SHOOT = 3,
+	HIKE = 4,
+	DIE = 5
 };
 
 class CPlayer : public CGameObject
 {
 protected:
 	int currentAnimation;
+	int currentState;
+	State* listState;
 public: 
 	void Update(DWORD dt);
 	void Render();
 	void SetPlayerMovement(int state, int direction);
 	void SetCurrentAnimation(int ani) { this->currentAnimation = ani; };
 	int GetCurrentAnimation() { return this->currentAnimation; };
+	void SetCurrentState(int state) { this->currentState = state; };
+	int GetCurrentState() { return this->currentState; };
 };
