@@ -13,48 +13,72 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Framework">
+      <UniqueIdentifier>{b39d5cba-06ae-4ec9-83ca-75cb8469a2a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework">
+      <UniqueIdentifier>{1b559ef6-e588-4116-a4aa-85d107c0ef90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Debug">
+      <UniqueIdentifier>{4153d694-608c-4e77-8305-2190d0610f91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Graphic">
+      <UniqueIdentifier>{f2b543c7-089c-4323-8f61-3e38d9072840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\GameObject">
+      <UniqueIdentifier>{fb159207-a55a-46c9-81c1-03228e8c3227}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Debug">
+      <UniqueIdentifier>{b6c46d1c-bcaf-4a1c-b1f0-07e444f8788d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\GameObject">
+      <UniqueIdentifier>{840268af-e268-4fd8-bce1-c18ed75d8250}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Graphic">
+      <UniqueIdentifier>{dc4cdf3e-82fe-4b0e-8d65-3b13204c6153}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="debug.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sprites.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Textures.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>Source Files\Framework\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprites.cpp">
+      <Filter>Source Files\Framework\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Framework\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="debug.cpp">
+      <Filter>Source Files\Framework\Debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="debug.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprites.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Textures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprites.h">
+      <Filter>Header Files\Framework\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures.h">
+      <Filter>Header Files\Framework\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="debug.h">
+      <Filter>Header Files\Framework\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\Framework\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
