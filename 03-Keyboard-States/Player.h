@@ -18,24 +18,6 @@
 //#define PLAYER_STATE_WALKING_LEFT	200
 //#define PLAYER_STATE_JUMP			300
 
-enum Direction
-{
-	RIGHT = 100,
-	DOWN = 200,
-	LEFT = 300,
-	UP = 400
-};
-
-enum State
-{
-	IDLE = 0,
-	WALK = 1,
-	JUMP = 2,
-	SHOOT = 3,
-	HIKE = 4,
-	DIE = 5
-};
-
 class CPlayer : public CGameObject
 {
 protected:
@@ -50,4 +32,5 @@ public:
 	int GetCurrentAnimation() { return this->currentAnimation; };
 	void SetCurrentState(int state) { this->currentState = state; };
 	int GetCurrentState() { return this->currentState; };
+	void InitPlayerAnimation();
 };

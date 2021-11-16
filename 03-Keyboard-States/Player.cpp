@@ -103,3 +103,9 @@ void CPlayer::SetPlayerMovement(int state, int direction)
 	//}
 }
 
+void CPlayer::InitPlayerAnimation()
+{
+
+}
+
+

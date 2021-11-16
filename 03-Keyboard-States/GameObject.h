@@ -6,8 +6,25 @@
 
 #include "Sprites.h"
 
-
 using namespace std;
+
+enum Direction
+{
+	RIGHT = 100,
+	DOWN = 200,
+	LEFT = 300,
+	UP = 400
+};
+
+enum State
+{
+	IDLE = 0,
+	WALK = 1,
+	JUMP = 2,
+	SHOOT = 3,
+	HIKE = 4,
+	DIE = 5
+};
 
 class CGameObject
 {

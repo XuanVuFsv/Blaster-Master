@@ -19,6 +19,7 @@
 #include "Textures.h"
 
 #include "Player.h"
+#include "Turtle.h"
 
 #define WINDOW_CLASS_NAME L"SampleWindow"
 #define MAIN_WINDOW_TITLE L"02 - Sprite animation"
@@ -35,6 +36,7 @@
 
 CGame *game;
 CPlayer *player;
+CTurtle* turtle;
 
 class CSampleKeyHander: public CKeyEventHandler
 {
@@ -96,12 +98,16 @@ void LoadResources()
 	CTextures * textures = CTextures::GetInstance();
 
 	textures->Add(ID_TEX_MARIO, L"textures\\player.png", D3DCOLOR_XRGB(0, 57, 115));
+	textures->Add(ID_TEX_ENEMY, L"textures\\enemy.png", D3DCOLOR_XRGB(0, 57, 115));
 
 	CSprites * sprites = CSprites::GetInstance();
 	CAnimations * animations = CAnimations::GetInstance();
 	
 	LPDIRECT3DTEXTURE9 texPlayer = textures->Get(ID_TEX_MARIO);
+	LPDIRECT3DTEXTURE9 texTurtle = textures->Get(ID_TEX_ENEMY);
 
+
+#pragma region Init Player Animation
 	//Player left
 	sprites->Add(10001, 209, 69, 231, 100, texPlayer);
 	sprites->Add(10002, 234, 69, 256, 100, texPlayer);
@@ -155,6 +161,29 @@ void LoadResources()
 	CPlayer::AddAnimation(503);		// up
 
 	player->SetPosition(0.0f, 100.0f);
+#pragma endregion
+
+#pragma region Enemyanimation
+	//up
+	sprites->Add(20001, 84, 1150, 101, 1166, texTurtle);
+	sprites->Add(20002, 104, 1151, 121, 1166, texTurtle);
+	sprites->Add(20003, 132, 1151, 149, 1166, texTurtle);
+
+	LPANIMATION ani;
+
+	ani = new CAnimation(100);
+	ani->Add(20001);
+	ani->Add(20002);
+	ani->Add(20003);
+	animations->Add(601, ani);
+
+	turtle = new CTurtle();
+	CTurtle::AddAnimation(601);
+
+	turtle->SetPosition(100.0f, 100.0f);
+#pragma endregion
+
+
 }
 
 /*
@@ -164,6 +193,7 @@ void LoadResources()
 void Update(DWORD dt)
 {
 	player->Update(dt);
+	turtle->Update(dt);
 }
 
 /*

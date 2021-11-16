@@ -37,6 +37,12 @@
     <Filter Include="Header Files\Framework\Graphic">
       <UniqueIdentifier>{dc4cdf3e-82fe-4b0e-8d65-3b13204c6153}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Object">
+      <UniqueIdentifier>{4847b75c-815c-473b-a32b-9333a715b791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object">
+      <UniqueIdentifier>{fd00bd72-86c8-460a-8d3b-35365fbe4c0d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -60,6 +66,9 @@
     <ClCompile Include="debug.cpp">
       <Filter>Source Files\Framework\Debug</Filter>
     </ClCompile>
+    <ClCompile Include="Turtle.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -79,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Header Files\Framework\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Turtle.h">
+      <Filter>Header Files\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
