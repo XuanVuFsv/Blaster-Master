@@ -26,6 +26,9 @@ enum State
 	DIE = 5
 };
 
+class CGameObject;
+typedef CGameObject* LPGAMEOBJECT;
+
 class CGameObject
 {
 protected:
@@ -56,7 +59,9 @@ public:
 
 	CGameObject();
 
-	void Update(DWORD dt);
-	void Render();
+	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *listObject = NULL);
+	virtual void Render() = 0;
+
+	//void Render();
 	~CGameObject();
 };

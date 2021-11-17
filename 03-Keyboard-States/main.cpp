@@ -18,6 +18,8 @@
 #include "GameObject.h"
 #include "Textures.h"
 
+#include "SceneGame.h"
+
 #include "Player.h"
 #include "Turtle.h"
 
@@ -25,8 +27,8 @@
 #define MAIN_WINDOW_TITLE L"02 - Sprite animation"
 
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(200, 200, 255)
-#define SCREEN_WIDTH 320
-#define SCREEN_HEIGHT 240
+#define SCREEN_WIDTH 528
+#define SCREEN_HEIGHT 480
 
 #define MAX_FRAME_RATE 90
 
@@ -36,7 +38,7 @@
 
 CGame *game;
 CPlayer *player;
-CTurtle* turtle;
+SceneManager* _sceneManager;
 
 class CSampleKeyHander: public CKeyEventHandler
 {
@@ -155,34 +157,41 @@ void LoadResources()
 	animations->Add(503, ani);
 
 	player = new CPlayer();
+	_sceneManager->InitGame(player);
+
 	CPlayer::AddAnimation(500);		// left
 	CPlayer::AddAnimation(501);		// right
 	CPlayer::AddAnimation(502);		// down
 	CPlayer::AddAnimation(503);		// up
 
 	player->SetPosition(0.0f, 100.0f);
+
 #pragma endregion
 
 #pragma region Enemyanimation
-	//up
+
 	sprites->Add(20001, 84, 1150, 101, 1166, texTurtle);
 	sprites->Add(20002, 104, 1151, 121, 1166, texTurtle);
 	sprites->Add(20003, 132, 1151, 149, 1166, texTurtle);
 
-	LPANIMATION ani;
+	LPANIMATION turtlAni;
 
-	ani = new CAnimation(100);
-	ani->Add(20001);
-	ani->Add(20002);
-	ani->Add(20003);
-	animations->Add(601, ani);
-
-	turtle = new CTurtle();
+	turtlAni = new CAnimation(100);
+	turtlAni->Add(20001);
+	turtlAni->Add(20002);
+	turtlAni->Add(20003);
+	animations->Add(601, turtlAni);
 	CTurtle::AddAnimation(601);
 
-	turtle->SetPosition(100.0f, 100.0f);
 #pragma endregion
+	//for (int i = 0; i < 5; i++)
+	//{
+	//	CTurtle* turtle;
+	//	turtle = new CTurtle();
 
+	//	turtle->SetPosition(100.0f, 100.0f);
+	//	CTurtle::AddTurtle(turtle);
+	//}
 
 }
 
@@ -192,8 +201,9 @@ void LoadResources()
 */
 void Update(DWORD dt)
 {
-	player->Update(dt);
-	turtle->Update(dt);
+	_sceneManager->Update(dt);
+	//player->Update(dt, listEnemy);
+	//turtle->Update(dt);
 }
 
 /*
@@ -213,6 +223,8 @@ void Render()
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
 		player->Render();
+		_sceneManager->Render();
+		//turtle->Render();
 
 		spriteHandler->End();
 		d3ddv->EndScene();
@@ -314,6 +326,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	game = CGame::GetInstance();
 	game->Init(hWnd);
+
+	_sceneManager = SceneManager::GetInstance();
+	_sceneManager->SetScene(new SceneGame());
 
 	keyHandler = new CSampleKeyHander();
 	game->InitKeyboard(keyHandler);

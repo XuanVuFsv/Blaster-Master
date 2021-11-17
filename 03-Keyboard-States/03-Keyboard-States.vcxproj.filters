@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Object">
       <UniqueIdentifier>{fd00bd72-86c8-460a-8d3b-35365fbe4c0d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Framework\Scene">
+      <UniqueIdentifier>{9ecae9f3-8beb-49e7-afe1-14678491b7aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Scene">
+      <UniqueIdentifier>{c498390f-2b4b-4a6d-871d-98863476c30b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -69,6 +75,15 @@
     <ClCompile Include="Turtle.cpp">
       <Filter>Source Files\Object</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Framework\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGame.cpp">
+      <Filter>Source Files\Framework\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files\Framework\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -91,6 +106,15 @@
     </ClInclude>
     <ClInclude Include="Turtle.h">
       <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files\Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files\Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGame.h">
+      <Filter>Header Files\Framework\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

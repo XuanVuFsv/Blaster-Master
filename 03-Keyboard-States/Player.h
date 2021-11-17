@@ -25,7 +25,7 @@ protected:
 	int currentState;
 	State* listState;
 public: 
-	void Update(DWORD dt);
+	void Update(DWORD dt, vector<LPGAMEOBJECT>* listObjects);
 	void Render();
 	void SetPlayerMovement(int state, int direction);
 	void SetCurrentAnimation(int ani) { this->currentAnimation = ani; };

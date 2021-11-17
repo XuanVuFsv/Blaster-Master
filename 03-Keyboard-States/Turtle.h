@@ -17,30 +17,16 @@
 //#define TURTLE_STATE_WALKING_LEFT	200
 //#define TURTLE_STATE_JUMP			300
 
-enum Direction
-{
-	RIGHT = 100,
-	DOWN = 200,
-	LEFT = 300,
-	UP = 400
-};
-
-enum State
-{
-	IDLE = 0,
-	WALK = 1,
-	SHOOT = 3,
-	DIE = 5
-};
-
 class CTurtle : public CGameObject
 {
 protected:
 	int currentAnimation;
 	int currentState;
 	State* listState;
+
 public:
-	void Update(DWORD dt);
+	virtual ~CTurtle();
+	void Update(DWORD dt, vector<LPGAMEOBJECT>* listObject = NULL);
 	void Render();
 	void SetTurtleMovement(int state, int direction);
 	void SetCurrentAnimation(int ani) { this->currentAnimation = ani; };

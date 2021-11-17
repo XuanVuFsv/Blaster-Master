@@ -37,7 +37,7 @@ public:
 
 	CGameObject(float x, float y);
 
-	void Update(DWORD dt);
-	void Render();
+	virtual void Update(DWORD dt);
+	virtual void Render();
 	~CGameObject();
 };

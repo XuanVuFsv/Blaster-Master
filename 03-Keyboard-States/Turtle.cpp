@@ -1,9 +1,21 @@
 #include "Game.h"
 #include "Turtle.h"
 
-void CTurtle::Update(DWORD dt)
+//CTurtle::CTurtle()
+//{
+//
+//}
+
+CTurtle::~CTurtle()
+{
+
+}
+
+
+void CTurtle::Update(DWORD dt, vector<LPGAMEOBJECT>* listObject)
 {
 	CGameObject::Update(dt);
+	CTurtle::SetState(Direction::RIGHT);
 
 	//int BackBufferWidth = CGame::GetInstance()->GetBackBufferWidth();
 	//int BackBufferHeight = CGame::GetInstance()->GetBackBufferHeight();
@@ -14,7 +26,7 @@ void CTurtle::Update(DWORD dt)
 
 void CTurtle::Render()
 {
-	animations[0]->Render(x, y, CGameObject::GetState());
+	animations[4]->Render(x, y, CGameObject::GetState());
 }
 
 void CTurtle::SetTurtleMovement(int state, int direction)
@@ -49,6 +61,7 @@ void CTurtle::SetTurtleMovement(int state, int direction)
 		}
 	}
 }
+
 
 void CTurtle::InitTurtleAnimation()
 {

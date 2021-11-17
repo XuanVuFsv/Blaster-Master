@@ -14,15 +14,16 @@ CGameObject::CGameObject()
 	nx = 1;	
 }
 
-void CGameObject::Update(DWORD dt)
+void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* listObject)
 {
 	x += vx*dt;
 	y += vy*dt;
 }
 
-void CGameObject::Render()
-{
-}
+//void CGameObject::Render()
+//{
+//
+//}
 
 void CGameObject::AddAnimation(int aniId)
 {

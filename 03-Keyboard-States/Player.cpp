@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "Player.h"
 
-void CPlayer::Update(DWORD dt)
+void CPlayer::Update(DWORD dt, vector<LPGAMEOBJECT>* listObject)
 {
 	CGameObject::Update(dt);
 
