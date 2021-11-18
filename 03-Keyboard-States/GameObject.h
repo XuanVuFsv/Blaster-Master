@@ -45,6 +45,8 @@ protected:
 	int state;	
 	int direction;
 
+	RECT bound;
+
 	static vector<LPANIMATION> animations;
 	CSprites* sprite;
 
@@ -58,7 +60,8 @@ public:
 	int GetDirection() { return this->direction; }
 
 	static void AddAnimation(int aniId);
-	RECT GetBounding();
+	RECT GetBounding() { return bound; };
+	void UpdateBounding();
 
 	CGameObject();
 

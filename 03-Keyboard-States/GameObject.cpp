@@ -33,8 +33,17 @@ void CGameObject::AddAnimation(int aniId)
 
 //RECT CGameObject::GetBounding()
 //{
-//	//return sprite->GetBounding();
+//	
 //}
+//
+void CGameObject::UpdateBounding()
+{
+	bound.left = x;
+	bound.top = y;
+	bound.right = x + 16;
+	bound.bottom = y - 16;
+}
+
 
 CGameObject::~CGameObject()
 {
