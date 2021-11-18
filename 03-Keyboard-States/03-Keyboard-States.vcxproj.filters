@@ -49,6 +49,18 @@
     <Filter Include="Source Files\Framework\Scene">
       <UniqueIdentifier>{c498390f-2b4b-4a6d-871d-98863476c30b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Framework\Camera">
+      <UniqueIdentifier>{7de85061-7325-4c25-9a52-648832894e8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Camera">
+      <UniqueIdentifier>{93970d6d-7303-4004-a461-ef512bbf9369}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\MapEditor">
+      <UniqueIdentifier>{7f6d902b-3ba5-4cde-8597-ade9081dadc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\MapEitor">
+      <UniqueIdentifier>{8535409c-6455-494c-87d0-97111492cc0b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -84,6 +96,12 @@
     <ClCompile Include="SceneManager.cpp">
       <Filter>Source Files\Framework\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Framework\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="map_editor.cpp">
+      <Filter>Source Files\Framework\MapEitor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -115,6 +133,15 @@
     </ClInclude>
     <ClInclude Include="SceneGame.h">
       <Filter>Header Files\Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\Framework\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="map_editor.h">
+      <Filter>Header Files\Framework\MapEditor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

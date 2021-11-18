@@ -27,7 +27,7 @@ protected:
 public:
 	virtual ~CTurtle();
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* listObject = NULL);
-	void Render();
+	void Render(Camera* camera);
 	void SetTurtleMovement(int state, int direction);
 	void SetCurrentAnimation(int ani) { this->currentAnimation = ani; };
 	int GetCurrentAnimation() { return this->currentAnimation; };

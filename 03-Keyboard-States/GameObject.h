@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Sprites.h"
+#include "Camera.h"
 
 using namespace std;
 
@@ -45,6 +46,7 @@ protected:
 	int direction;
 
 	static vector<LPANIMATION> animations;
+	CSprites* sprite;
 
 public: 
 	void SetPosition(float x, float y) { this->x = x, this->y = y; }
@@ -56,12 +58,12 @@ public:
 	int GetDirection() { return this->direction; }
 
 	static void AddAnimation(int aniId);
+	RECT GetBounding();
 
 	CGameObject();
 
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *listObject = NULL);
-	virtual void Render() = 0;
+	virtual void Render(Camera* camera) = 0;
 
-	//void Render();
 	~CGameObject();
 };

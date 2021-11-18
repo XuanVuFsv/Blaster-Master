@@ -24,13 +24,18 @@ protected:
 	int currentAnimation;
 	int currentState;
 	State* listState;
+	Camera* camera;
 public: 
+	CPlayer(Camera* camera);
+	void SetCamera(Camera* _camera) { camera = _camera; };
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* listObjects);
-	void Render();
+	virtual void Render(Camera* camera);
 	void SetPlayerMovement(int state, int direction);
 	void SetCurrentAnimation(int ani) { this->currentAnimation = ani; };
 	int GetCurrentAnimation() { return this->currentAnimation; };
 	void SetCurrentState(int state) { this->currentState = state; };
 	int GetCurrentState() { return this->currentState; };
 	void InitPlayerAnimation();
+	float GetVx() { return vx; }
+	float GetVy() { return vy; }
 };

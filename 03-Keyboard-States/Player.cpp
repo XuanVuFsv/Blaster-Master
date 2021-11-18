@@ -1,6 +1,10 @@
 #include "Game.h"
 #include "Player.h"
 
+CPlayer::CPlayer(Camera* _camera)
+{
+	camera = _camera;
+}
 void CPlayer::Update(DWORD dt, vector<LPGAMEOBJECT>* listObject)
 {
 	CGameObject::Update(dt);
@@ -22,9 +26,10 @@ void CPlayer::Update(DWORD dt, vector<LPGAMEOBJECT>* listObject)
 	if (vy < 0 && y < 0) y = 0;
 }
 
-void CPlayer::Render()
+void CPlayer::Render(Camera* camera)
 {
 	int ani = GetCurrentAnimation();
+	D3DXVECTOR2 pos = camera->Transform(x, y);
 
 	//if (vx == 0 && vy == 0)
 	//{
@@ -42,7 +47,7 @@ void CPlayer::Render()
 	}
 
 	SetCurrentAnimation(ani);
-	animations[ani]->Render(x, y, CGameObject::GetState());
+	animations[ani]->Render(pos.x, pos.y, CGameObject::GetState());
 }
 
 void CPlayer::SetPlayerMovement(int state, int direction)

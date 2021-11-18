@@ -1,6 +1,7 @@
 #include "SceneGame.h"
 #include <ctime>
 #include <cstdlib>
+#include "define.h"
 
 
 SceneGame::SceneGame()
@@ -23,7 +24,13 @@ void SceneGame::LoadResources()
 
 void SceneGame::InitGame(CPlayer* _player)
 {
+	camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
+	camera->SetPosition(0, SCREEN_HEIGHT);
+	camera->SetBoundary(0, MAP_WIDTH, MAP_HEIGHT, 0);
 	player = _player;
+	player->SetCamera(camera);
+	player->SetPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+
 	for (int i = 0; i < 10; i++)
 	{
 		//srand(time(NULL));
@@ -32,21 +39,24 @@ void SceneGame::InitGame(CPlayer* _player)
 
 		CTurtle* turtle = new CTurtle();
 		//turtle->SetPosition(x * 16, y * 16);
-		turtle->SetPosition(64 * i + 128, 64 * i + 256);
+		turtle->SetPosition(100 * i, 100 * i);
 		listEnemy.push_back(turtle);
 	}
 }
 
 void SceneGame::Render()
 {
+	player->Render(camera);
 	for (UINT i = 0; i < listEnemy.size(); i++)
 	{
-		listEnemy[i]->Render();
+		listEnemy[i]->Render(camera);
 	}
 }
 
 void SceneGame::Update(DWORD dt)
 {
+	camera->SetCameraVelocity(player->GetVx(), player->GetVy());
+	camera->Update(dt);
 	player->Update(dt, &listObj);
 	for (UINT i = 0; i < listEnemy.size(); i++)
 	{

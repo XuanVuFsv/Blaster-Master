@@ -17,7 +17,7 @@ CGameObject::CGameObject()
 void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* listObject)
 {
 	x += vx*dt;
-	y += vy*dt;
+	y += -vy*dt;
 }
 
 //void CGameObject::Render()
@@ -31,7 +31,10 @@ void CGameObject::AddAnimation(int aniId)
 	animations.push_back(ani);
 }
 
-
+//RECT CGameObject::GetBounding()
+//{
+//	//return sprite->GetBounding();
+//}
 
 CGameObject::~CGameObject()
 {

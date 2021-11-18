@@ -13,6 +13,8 @@
 #define TOP_MAP 0
 #define RIGHT_MAP 528
 #define BOT_MAP 480
+#define MAP_WIDTH 1000
+#define MAP_HEIGHT 1500
 
 class SceneGame : public Scene
 {
@@ -26,6 +28,7 @@ private:
 	bool isAllowCheckTimeWaitProcessCreateGhost = false; // cho phép kt thời gian chờ xử lí tạo ghost
 
 	CPlayer* player;
+	Camera* camera;
 
 	vector<CGameObject*> listObj;
 	vector <CGameObject*> listEnemy;

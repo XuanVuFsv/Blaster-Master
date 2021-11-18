@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include "GameObject.h"
 #include "Player.h"
+#include "Camera.h"
 
 class Scene
 {

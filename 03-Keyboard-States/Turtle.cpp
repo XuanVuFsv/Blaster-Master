@@ -24,9 +24,10 @@ void CTurtle::Update(DWORD dt, vector<LPGAMEOBJECT>* listObject)
 	if ((vx > 0 && x > MAX_DISTANCE) || (vx < 0 && x < -MAX_DISTANCE)) vx *= -1;
 }
 
-void CTurtle::Render()
+void CTurtle::Render(Camera* camera)
 {
-	animations[4]->Render(x, y, CGameObject::GetState());
+	D3DXVECTOR2 pos = camera->Transform(x, y);
+	animations[4]->Render(pos.x, pos.y, CGameObject::GetState());
 }
 
 void CTurtle::SetTurtleMovement(int state, int direction)

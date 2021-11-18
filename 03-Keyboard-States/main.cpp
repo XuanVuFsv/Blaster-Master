@@ -13,6 +13,7 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 
+#include "define.h"
 #include "debug.h"
 #include "Game.h"
 #include "GameObject.h"
@@ -27,8 +28,6 @@
 #define MAIN_WINDOW_TITLE L"02 - Sprite animation"
 
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(200, 200, 255)
-#define SCREEN_WIDTH 528
-#define SCREEN_HEIGHT 480
 
 #define MAX_FRAME_RATE 90
 
@@ -71,7 +70,7 @@ void CSampleKeyHander::KeyState(BYTE *states)
 		player->SetPlayerMovement(State::WALK, Direction::RIGHT);
 	else if (game->IsKeyDown(DIK_LEFT))
 		player->SetPlayerMovement(State::WALK, Direction::LEFT);
-	else if (game->IsKeyDown(DIK_UP))
+	else if (game->IsKeyDown(DIK_RSHIFT))
 		player->SetPlayerMovement(State::WALK, Direction::UP);
 	else if (game->IsKeyDown(DIK_DOWN))
 		player->SetPlayerMovement(State::WALK, Direction::DOWN);
@@ -156,16 +155,13 @@ void LoadResources()
 	ani->Add(10033);
 	animations->Add(503, ani);
 
-	player = new CPlayer();
+	player = new CPlayer(NULL);
 	_sceneManager->InitGame(player);
 
 	CPlayer::AddAnimation(500);		// left
 	CPlayer::AddAnimation(501);		// right
 	CPlayer::AddAnimation(502);		// down
 	CPlayer::AddAnimation(503);		// up
-
-	player->SetPosition(0.0f, 100.0f);
-
 #pragma endregion
 
 #pragma region Enemyanimation
@@ -222,7 +218,6 @@ void Render()
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
-		player->Render();
 		_sceneManager->Render();
 		//turtle->Render();
 
